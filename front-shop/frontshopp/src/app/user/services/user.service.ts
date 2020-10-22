@@ -21,6 +21,10 @@ export class UserService
     register(data: User) {
         return this.http.post(`${this.url}register`, data, this.getOptions())
     }
+    contact(id:string)
+    {
+        return this.http.get(`${this.url}contact/`+id,this.getOptions())
+    }
     
 
     private getOptions() {

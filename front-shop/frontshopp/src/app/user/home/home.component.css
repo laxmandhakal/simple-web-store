@@ -1,5 +1,11 @@
-label,
-p {
+p{
+    font-size:1.5rem;
+    color:grey;
+    font-weight:500;
+    text-decoration:underline;
+}
+label
+ {
     font-weight: bold;
     color: #03a9f4;
 }

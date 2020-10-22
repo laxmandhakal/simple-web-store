@@ -15,6 +15,8 @@
                 <span *ngIf="!item.price">N/A</span><br>
                 <label>  Brand : </label> <span *ngIf="item.brand">{{item.brand}}</span>
                 <span *ngIf="!item.brand">N/A</span>
+                <br>
+                <button class="btn btn-info" routerLink="/user/contact/{{item.user._id}}">Contact Dealer</button>
             </div>
         </div>
     </div>

@@ -21,12 +21,19 @@ function user(mapData, reqBody) {
         mapData.phoneNumber = reqBody.phoneNumber
     }
     if (reqBody.password) {
-        hash = bcrypt.hashSync(reqBody.password, 2);
+        hash = bcrypt.hashSync(reqBody.password, 5);
         mapData.password = hash
 
     }
     return mapData
 }
+router.get('/contact/:id', function(req, res, next) {
+    console.log("id>>", req.params.id);
+    userModel.findById(req.params.id)
+        .then(user => res.json(user))
+        .catch(err => next(err))
+
+})
 
 
 router
