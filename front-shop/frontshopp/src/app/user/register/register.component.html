@@ -1,0 +1,46 @@
+<h2>Register</h2>
+<p>Please provide your details for registration</p>
+<form #registerForm="ngForm" class="from-group">
+    <label for="name">Name</label>
+    <input class="form-control" type="text" placeholder="Name" name="Name" [(ngModel)]="user.name">
+    <label for="username">Username</label>
+    <input class="form-control" type="text" placeholder="Username" name="Username" [(ngModel)]="user.username" required #username="ngModel">
+    <div class="danger" *ngIf="username.invalid && username.dirty">
+        required field*
+    </div>
+    <label for="password">Password</label>
+    <input class="form-control" type="password" placeholder="Password" name="password" [(ngModel)]="user.password" required minlength="6" #password="ngModel">
+    <!-- <div class="danger" [hidden]="password.valid || password.pristine">
+        required field*
+    </div> -->
+    <div class="danger" *ngIf="password.errors && password.dirty">
+        <div *ngIf="password.errors.required">
+            required field*
+        </div>
+        <div *ngIf="password.errors.minlength">
+            weak password
+        </div>
+    </div>
+    <div *ngIf="password.valid">
+        show tick mark
+    </div>
+    <label for="email">Email</label>
+    <input class="form-control" type="text" placeholder="Email" name="email" [(ngModel)]="user.email" required email #email="ngModel">
+    <div class="danger" *ngIf="email.errors && email.dirty">
+        <div *ngIf="email.errors.required">
+            required field*
+        </div>
+        <div *ngIf="email.errors.email">
+            not an valid email
+        </div>
+    </div>
+    <label for="address">Address</label>
+    <input class="form-control" type="text" placeholder="Address" name="address" [(ngModel)]="user.address">
+    <label for="phoneNumber">Phone Number</label>
+    <input class="form-control" type="text" placeholder="Phone Number" name="phoneNumber" [(ngModel)]="user.phoneNumber">
+    <br>
+    <button *ngIf="!submitting" [disabled]="registerForm.invalid" (click)="submit()" class="btn btn-primary">submit</button>
+    <button *ngIf="submitting" disabled class="btn btn-info">submitting...</button>
+</form>
+<p>Already Registered?</p>
+<a routerLink="/user/login">back to login</a>

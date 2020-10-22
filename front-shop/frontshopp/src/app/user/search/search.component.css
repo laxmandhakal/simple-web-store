@@ -1,0 +1,15 @@
+label {
+    font-weight: bold;
+}
+
+.text {
+    text-align: center;
+}
+
+.text>span {
+    color: #48494a;
+}
+
+.text>label {
+    color: #03a9f4;
+}

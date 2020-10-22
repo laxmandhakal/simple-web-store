@@ -1,0 +1,15 @@
+<div class="container">
+    <div class="wrapper">
+        <div class="item"> <a class="active" routerLink="/user/home" routerLinkActive="active-link">Home</a></div>
+
+        <div class="item" *ngIf="!token"><a [routerLink]="['/user/register']" routerLinkActive="active-link">Register</a></div>
+        <div class="item" *ngIf="!token"><a [routerLink]="['/user/login']" routerLinkActive="active-link">Login</a></div>
+        <div class="item" *ngIf="token"> <a href="/user/login" (click)="logout()" routerLinkActive="active-link">Logout</a></div>
+        <div class="item" *ngIf="token"><a [routerLink]="['/product/add']" routerLinkActive="active-link">Add Item</a></div>
+        <div class="item" *ngIf="token"><a [routerLink]="['/product/view']" routerLinkActive="active-link">View Item</a></div>
+        <div class="item"><a [routerLink]="['/user/search']" routerLinkActive="active-link">search</a></div>
+    </div>
+    <br>
+    <router-outlet></router-outlet>
+
+</div>

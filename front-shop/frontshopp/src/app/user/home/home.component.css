@@ -1,0 +1,13 @@
+label,
+p {
+    font-weight: bold;
+    color: #03a9f4;
+}
+
+.text {
+    text-align: center;
+}
+
+span {
+    color: #48494a;
+}

@@ -1,0 +1,21 @@
+<p>Our products</p>
+
+<div *ngIf="items.length">
+    <div class="row">
+        <div *ngFor="let item of items;let i= index" class="col-lg-4 col-md-6 col-sm-12">
+            <div class="text">
+                <img src="{{imgUrl}}{{item.image}}" alt="item_image.jpg" width="100%" height="300px"><br>
+                <label> S.N :</label><span> {{i +1}}</span> <br>
+                <label> Name :</label>
+                <span *ngIf="item.name">{{item.name}}</span>
+                <span *ngIf="!item.name">N/A</span><br>
+                <label> Category : </label> <span *ngIf="item.category">{{item.category}}</span>
+                <span *ngIf="!item.category">N/A</span><br>
+                <label> Price :</label> <span *ngIf="item.price">{{item.price}}</span>
+                <span *ngIf="!item.price">N/A</span><br>
+                <label>  Brand : </label> <span *ngIf="item.brand">{{item.brand}}</span>
+                <span *ngIf="!item.brand">N/A</span>
+            </div>
+        </div>
+    </div>
+</div>

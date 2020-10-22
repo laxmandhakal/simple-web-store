@@ -1,0 +1,20 @@
+<h2>Login</h2>
+<p>Please login to start your session</p>
+
+<form #form="ngForm" class="form-group">
+    <label for="username">Username</label>
+    <input class="form-control" id="usernmae" type="text" placeholder="Username" name="username" [(ngModel)]="user.username" required #username="ngModel">
+    <div class="danger" *ngIf="username.invalid && username.dirty">
+        required field*
+    </div>
+    <label for="password">Password</label>
+    <input class="form-control" type="password" placeholder="********" name="password" [(ngModel)]="user.password" required #password="ngModel">
+    <div class="danger" *ngIf="password.invalid && password.dirty">
+        required field*
+    </div>
+    <br>
+    <button class="btn btn-primary" [disabled]="!form.valid" *ngIf="!submitting" (click)="login()">login</button>
+    <button class="btn btn-info" disabled *ngIf="submitting">logingin...</button>
+</form>
+<p>Don't have an account?</p>
+<p>Register <a routerLink="/user/register">here</a></p>

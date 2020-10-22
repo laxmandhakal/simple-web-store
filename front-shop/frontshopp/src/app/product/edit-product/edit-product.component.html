@@ -1,0 +1,47 @@
+<h2>Edit Item</h2>
+<div *ngIf="isLoading">
+    <app-loader></app-loader>
+</div>
+<form *ngIf="!isLoading" #form="ngForm" class="form-group">
+    <label for="name">name</label>
+    <input class="form-control" type="text" placeholder="name" name="name" [(ngModel)]="item.name">
+    <label for="category">category</label>
+    <input class="form-control" type="text" placeholder="category" name="category" [(ngModel)]="item.category" required>
+    <label for="description">description</label>
+    <input class="form-control" type="text" placeholder="description" name="description" [(ngModel)]="item.description">
+    <label for="brand">brand</label>
+    <input class="form-control" type="text" placeholder="brand" name="brand" [(ngModel)]="item.brand">
+    <label for="price">price</label>
+    <input class="form-control" type="text" placeholder="price" name="price" [(ngModel)]="item.price">
+    <label for="color">color</label>
+    <input class="form-control" type="text" placeholder="color" name="color" [(ngModel)]="item.color">
+    <label for="model">model</label>
+    <input class="form-control" type="text" placeholder="model" name="model" [(ngModel)]="item.model">
+    <label for="origin">origin</label>
+    <input class="form-control" type="text" placeholder="origin" name="origin" [(ngModel)]="item.origin">
+    <label for="size">size</label>
+    <input class="form-control" type="text" placeholder="size" name="size" [(ngModel)]="item.size">
+    <label for="quantity">quantity</label>
+    <input class="form-control" type="text" placeholder="quantity" name="quantity" [(ngModel)]="item.quantity">
+    <!-- <input class="form-control" type="text" placeholder="discountedItem" name="discountedItem"
+        [(ngModel)]="item.discountedItem"> -->
+    <input type="checkbox" [checked]="item.discountedItem" name="disocuntedItem" [(ngModel)]="item.discountedItem"> discounted item
+    <div *ngIf="item.discountedItem">
+        <label for="discountType">discountType</label>
+        <input class="form-control" type="text" placeholder="discountType" name="discountType" [(ngModel)]="item.discountType">
+        <label for="discountUnit">discountUnit</label>
+        <input class="form-control" type="text" placeholder="discountUnit" name="discountUnit" [(ngModel)]="item.discountUnit">
+    </div>
+    <br>
+    <label for="tags">tags</label>
+    <input class="form-control" type="text" placeholder="tags" name="tags" [(ngModel)]="item.tags">
+    <div>
+        <p>Image</p>
+        <img src="{{imgURL}}{{item.image}}" alt="image.jpg" width="600px">
+    </div>
+    <label for="image">Choose Image</label>
+    <input type="file" class="form-control" name="image" (change)="fileChanged($event)">
+    <button (click)="submit()" class="btn btn-primary" [disabled]="form.invalid" *ngIf="!isSubmitting">submit</button>
+    <button class="btn btn-info" disabled *ngIf="isSubmitting">submitting...</button>
+
+</form>
