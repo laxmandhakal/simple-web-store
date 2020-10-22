@@ -3,7 +3,8 @@ var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var logger = require('morgan');
-// running database
+var cors = require('cors')
+    // running database
 require('./db')
     // routing middleware
 const apiRoute = require('./apiRoute')
@@ -12,11 +13,12 @@ var app = express();
 app.set('port', 9000);
 // third party middleware
 app.use(logger('dev'));
-// express middleware
+app.use(cors())
+    // express middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use('/file', express.static(path.join(__dirname, 'uploads')));
 
 app.use('/api', apiRoute)
 

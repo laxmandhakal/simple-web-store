@@ -31,7 +31,7 @@ const ItemSchema = new Schema({
     size: String,
     quantity: Number,
     image: String,
-    orgin: String,
+    origin: String,
     user: {
         type: Schema.Types.ObjectID,
         ref: 'user'

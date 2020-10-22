@@ -28,6 +28,7 @@ function user(mapData, reqBody) {
     return mapData
 }
 
+
 router
     .post('/register', function(req, res, next) {
         console.log(req.body)
@@ -42,7 +43,8 @@ router
             })
 
     })
-router.get('/login', function(req, res, next) {
+router.post('/login', function(req, res, next) {
+    console.log("request>>", req.body);
     userModel.findOne({
             $or: [{
                     username: req.body.username,
@@ -54,9 +56,12 @@ router.get('/login', function(req, res, next) {
         })
         .exec(function(err, user) {
             if (err) {
+                console.log("error", err);
                 return next({ msg: 'invalid login credentials' });
+
             }
             if (user) {
+                console.log("user>>", user)
                 bcrypt.compare(req.body.password, user.password).then(function(result) {
                     if (result) {
                         let token = jwt.sign({ id: user._id }, jwtSecret)
@@ -66,6 +71,8 @@ router.get('/login', function(req, res, next) {
                         next({ msg: 'invalid login credentials' })
                     }
                 })
+            } else {
+                next({ msg: "invalid login credential" })
             }
 
         });

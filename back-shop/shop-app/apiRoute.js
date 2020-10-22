@@ -10,7 +10,8 @@ const productSearch = require('.//route/productSearch')
 // router.use('/auth', authenticate);
 // router.use('/autho', authorize);
 router.use('/user', userRoute);
+router.use('/product', productSearch)
 router.use('/product', authorize, productRoute)
-router.use('/product/search', productSearch)
+
 
 module.exports = router;
