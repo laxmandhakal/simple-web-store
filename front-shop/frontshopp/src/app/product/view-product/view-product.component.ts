@@ -12,31 +12,24 @@ import { environment } from '../../../environments/environment ';
 })
 export class ViewProductComponent implements OnInit {
 
-  items:any;
+  items:Array<any>=[];
   isLoading: boolean = false;
   imgUrl;
-  @Input() inputData;
-  title: string = 'View Items';
   constructor(
     public productService: ProductService,
     public router: Router,
     public msgService: MsgService
   ) {
     this.imgUrl = environment.ImgURL;
-    console.log('input data will not apperar here', this.inputData)
+  
   }
 
   ngOnInit() {
-    console.log('input data of component', this.inputData);
-    if (this.inputData) {
-      this.title = "Search Results"
-      this.items = this.inputData;
-      return;
-    }
+    
     this.isLoading = true;
     this.productService.get()
       .subscribe(
-        (data) => {
+        (data:Array<any>) => {
           this.isLoading = false;
           this.items = data || [];
         },

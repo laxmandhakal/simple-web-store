@@ -20,6 +20,7 @@ this.id=this.activeRoute.snapshot.params['id']
   ngOnInit(): void {
 this.userService.contact(this.id).subscribe((data)=>{
   this.user=data;
+  console.log("user>>",data)
 },(err)=>this.msgService.showError(err)
 )
 

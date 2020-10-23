@@ -1,5 +1,7 @@
 <img src="../../../assets/img/client.png" height="200px" width="200px">
-<div>Name : {{user.name}}</div>
+<div *ngIf="user">
+<div> Name : {{user.name}}</div>
 <div>Email : {{user.email}}</div>
-<div *ngIf="user.phonenumber">Phone Number : {{user.phonenumber}}</div>
+<div *ngIf="user.phoneNumber">Phone Number : {{user.phoneNumber}}</div>
 <div *ngIf="user.address">Address : {{user.address}}</div>
+</div>

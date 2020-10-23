@@ -1,4 +1,6 @@
+
 <div *ngIf="!items.length">
+
     <b>  <p style="font-size: 1.5rem;">No product to show.Add products </p></b>
 </div>
 <div *ngIf="items.length">
@@ -16,10 +18,9 @@
                 <span *ngIf="!item.price">N/A</span><br>
                 <label>  Brand : </label> <span *ngIf="item.brand">{{item.brand}}</span>
                 <span *ngIf="!item.brand">N/A</span>
-                <div *ngIf="!inputData">
+                <br>
                     <button class="btn btn-info" routerLink="/product/edit/{{item._id}}">edit</button>
                     <button class="btn btn-danger" (click)="remove(item._id,i)">delete</button>
-                </div>
             </div>
         </div>
     </div>
